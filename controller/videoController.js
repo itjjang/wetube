@@ -1,5 +1,9 @@
 //export const homeController = (req, res) => res.send("Home");
-export const homeController = (req, res) => res.render("home", { pageTitle: "Home" });
+import  { videos } from "../db";
+
+export const homeController = (req, res) => {
+    res.render("home", { pageTitle: "Home", videos });
+}
 
 export const searchController = (req, res) => {
     const { query: { term: searchingBy } } = req;
