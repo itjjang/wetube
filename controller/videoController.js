@@ -7,7 +7,7 @@ export const homeController = (req, res) => {
 
 export const searchController = (req, res) => {
     const { query: { term: searchingBy } } = req;
-    res.render("search", { pageTitle: "Search", searchingBy });
+    res.render("search", { pageTitle: "Search", searchingBy, videos });
 }
 
 //export const videosController = (req, res) => res.send("Videos");
