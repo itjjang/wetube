@@ -1,5 +1,3 @@
-//export const homeController = (req, res) => res.send("Home");
-import  { videos } from "../db";
 import routes from "../routes";
 
 export const homeController = (req, res) => {
