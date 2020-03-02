@@ -17,7 +17,12 @@ const VideoSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now 
-    }
+    },
+    // 모든 Comment ID들을 array로 video에 집어 넣을 것인가
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 });
 
 const model = mongoose.model("Video", VideoSchema);
