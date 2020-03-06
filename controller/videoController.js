@@ -1,7 +1,14 @@
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const homeController = (req, res) => {
-    res.render("home", { pageTitle: "Home", videos });
+export const homeController = async(req, res) => {
+    try {
+        const videos = await Video.find({});
+        res.render("home", { pageTitle: "Home", videos });
+    } catch(error) {
+        console.log(error);
+        res.render("home", { pageTitle: "Home", videos: [] });
+    }    
 }
 
 export const searchController = (req, res) => {
@@ -10,7 +17,6 @@ export const searchController = (req, res) => {
 }
 
 export const getUploadVideoController = (req, res) => res.render("upload", { pageTitle: "Upload" });
-
 export const postUploadVideoController = (req, res) => {
     const { body: { file, title, description } } = req;
     // To Do: Upload and save video

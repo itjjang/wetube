@@ -1,9 +1,6 @@
 import routes from "../routes";
 
-export const getJoinController = (req, res) => {
-    res.render("join", { pageTitle: "Join" });
-}
-
+export const getJoinController = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoinController = (req, res) => {
     const { body: { name, email, password, password2 } } = req;
 
