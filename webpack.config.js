@@ -7,10 +7,18 @@ const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry: ENTRY_FILE,
+    entry: ["@babel/polyfill", ENTRY_FILE],
     mode: MODE,
     module: { 
         rules: [
+            {
+                test: /\.(js)$/,
+                use: [
+                    {
+                        loader: "babel-loader"
+                    }
+                ]
+            },
             {
                  test: /\.(scss)$/,
                  use: ExtractCSS.extract([
@@ -20,7 +28,7 @@ const config = {
                     {
                         loader: "postcss-loader",        // css를 받아 전달한 plugin을 이용해 css 반환 (css 호환성 처리)
                         options: {
-                            plugin() {
+                            plugins() {
                                 return [autoprefixer({ browers: "cover 99.5%" })];
                             }
                         }
